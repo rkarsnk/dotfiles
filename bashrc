@@ -111,6 +111,12 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
+case "$OSTYPE" in
+darwin*)
+   alias ls='ls -G'
+   ;;
+esac
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -124,8 +130,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.colorrc ]; then
-    eval `dircolors ~/.colorrc`
+if [ -x /usr/bin/dircolors ]; then
+    if [ -f ~/.colorrc ]; then
+        eval `dircolors ~/.colorrc`
+    fi
 fi
 
 if [ -f ~/.bash_aliases ]; then
