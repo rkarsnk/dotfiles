@@ -136,8 +136,8 @@ if [ -x /usr/bin/dircolors ]; then
     fi
 fi
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.dotfiles/bash_aliases ]; then
+    . ~/.dotfiles/bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
