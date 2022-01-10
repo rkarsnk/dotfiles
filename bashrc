@@ -111,14 +111,8 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-case "$OSTYPE" in
-darwin*)
-   alias ls='ls -G'
-   ;;
-esac
-
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -alhF'
+alias la='ls -Ah'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
