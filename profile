@@ -27,11 +27,12 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set Cargo env (Cargo is Rust package manager)
-if [ -f "$HOME/.cargo/evn ]; then
+if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
 export OP_SESSION_my="m2Whzf0TBxb6_jmfSx-cnSiwC6SBt4-jrw17cJLYaPo"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 

@@ -1,3 +1,6 @@
-emacs.d/auto-save-list/*
+/emacs.d/auto-save-list/*
 *~
-
+/config/
+!/config/i3/
+!/config/i3status/
+!/config/rofi/
