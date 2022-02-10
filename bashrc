@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|alacritty) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -111,9 +111,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alhF'
-alias la='ls -Ah'
-alias l='ls -CF'
+alias ll='LANG=C ls -alhF'
+alias la='LANG=C ls -Ah'
+alias l='LANG=C ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -161,3 +161,4 @@ then
   fi
 fi
 
+. "$HOME/.cargo/env"
