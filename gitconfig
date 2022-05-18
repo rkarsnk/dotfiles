@@ -8,7 +8,3 @@
 	defaultBranch = main
 [pull]
 	rebase = false
-[core]
-	pager = git-split-diffs --color |less -RFX
-[split-diffs]
-	theme-name = light
