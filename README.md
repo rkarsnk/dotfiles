@@ -2,6 +2,11 @@
 dotfile管理用リポジトリ
 
 # 使い方
+
+```
+git clone git@github.com:rkarsnk/dotfiles.git ~/.dotfiles
+```
+
 `.dofiles`ディレクトリ以下のファイルのシンボリックリンクを`home`に作成する。
 
 ```
