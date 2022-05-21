@@ -37,7 +37,7 @@ shopt -s checkwinsize
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color|alacritty) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -79,7 +79,6 @@ if [ "$color_prompt" = yes ]; then
     # color reset
     RESET="\[$(tput sgr0)\]"
     # shell prompt
-#    PS1="${debian_chroot:+($debian_chroot)}${BG_WHITE}${FG_RED}\u@\h${RESET}${BG_BLUE}${FG_WHITE}${sharp} \w \$${FG_BLUE}${RESET}${FG_BLUE}${sharp}${RESET} "
     PS1="${BG_WHITE}${FG_RED}\u@\h${RESET}${BG_BLUE}${FG_WHITE}${sharp} \w \$${FG_BLUE}${RESET}${FG_BLUE}${sharp}${RESET} "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -90,16 +89,16 @@ unset color_prompt force_color_prompt
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Alias definitions.
+if [ -f ~/.dotfiles/bash_aliases ]; then
+    . ~/.dotfiles/bash_aliases
+fi
 
+# LS_COLORS
 if [ -x /usr/bin/dircolors ]; then
     if [ -f ~/.colorrc ]; then
         eval `dircolors ~/.colorrc`
     fi
-fi
-
-# Alias definitions.
-if [ -f ~/.dotfiles/bash_aliases ]; then
-    . ~/.dotfiles/bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
