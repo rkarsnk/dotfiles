@@ -1,0 +1,9 @@
+stylesheet=./style.css
+prompt=...
+mode=run
+term=alacritty
+insensitive=true
+sort_order=default
+width=700
+lines=5
+key_expand=Tab

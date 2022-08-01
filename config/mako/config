@@ -1,0 +1,8 @@
+default-timeout=3000
+font=BIZ UDPGothic 20
+background-color=#ffffff
+text-color=#000000
+border-size=5
+border-color=#000000
+width=600
+height=200

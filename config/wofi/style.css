@@ -1,0 +1,28 @@
+*{
+	font-family: UDEV Gothic 35NF;
+	font-size: 14pt;
+}
+
+#inner-box {
+	background-color:#EEEEEE;
+}
+
+#outer-box {
+	margin: 2px;
+	padding: 5px;
+	background-color:#FEFEFE;
+
+}
+
+#text {
+	padding: 5px;
+}
+
+#entry:nth-child(even){
+ 	background-color: #DDDDDD;
+}
+
+#entry:selected {
+	background-color: #1E90FF;
+}
+
