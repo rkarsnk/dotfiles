@@ -1,12 +1,32 @@
+DOTFILES=$HOME/.dotfiles
 
-# ZSH prompt settigs
-export LSCOLORS=ExCxcxdxBxegedabagacad
+typeset -U path PATH
+path=(
+  /opt/local/bin(N-/)
+  /opt/local/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /Library/Apple/usr/bin
+)
 
-if [[ ${TERM_PROGRAM} != "vscode" ]]; then
-	sharp='\uE0B0'
-	PROMPT=`echo %K{white}%F{red}%B%n@%m%b%f%k%F{white}%K{blue}${sharp} %k%f%K{blue}%F{white}%B%~%b %#%f%k%F{blue}${sharp} %f`
+if [[ -d $DOTFILES ]] then
+    . $DOTFILES/zsh/zsh_history
+    . $DOTFILES/zsh/zsh_lscolors
+    . $DOTFILES/zsh/zsh_prompt
+    . $DOTFILES/zsh/zsh_aliases
+    . $DOTFILES/zsh/zsh_completion
+fi
+
+
+if [[ ! -f ~/.zshrc.zwc ]] then
+    zcompile ~/.zshrc
 else
-	sharp='\uE0B0'
-	PROMPT=`echo %K{white}%F{red}%B%n@%m%b%f%k%F{white}%K{blue}${sharp} %k%f%K{blue}%F{white}%B%~%b %#%f%k%F{blue}${sharp} %f`
+    if [[ ~/.zshrc -nt ~/.zshrc.zwc ]] then
+       zcompile ~/.zshrc
+    fi
 fi
 
