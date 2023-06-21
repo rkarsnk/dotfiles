@@ -17,7 +17,7 @@ general {
 order += "memory"
 #order += "ipv6"
 #order += "wireless _first_"
-order += "ethernet enp2s0"
+order += "ethernet enp4s0"
 #order += "battery all"
 #order += "disk /"
 #order += "load"
@@ -32,7 +32,7 @@ wireless _first_ {
         format_down = "W: down"
 }
 
-ethernet enp2s0 {
+ethernet enp4s0 {
         format_up = "ETH: %ip (%speed)"
         format_down = "ETH: down"
 }
