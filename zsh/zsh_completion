@@ -1,7 +1,6 @@
 if [[ -f /opt/local/bin/brew ]] then
     FPATH=/opt/local/share/zsh/site-functions:$FPATH
     FPATH=/opt/local/share/zsh-completions:$FPATH
-    source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 if [[ ! -d $HOME/.zsh ]] then

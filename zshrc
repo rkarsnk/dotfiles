@@ -21,6 +21,10 @@ if [[ -d $DOTFILES ]] then
     . $DOTFILES/zsh/zsh_completion
 fi
 
+# Cargo Env
+if [[ -f $HOME/.cargo/env ]] then
+    source "$HOME/.cargo/env"
+fi
 
 if [[ ! -f ~/.zshrc.zwc ]] then
     zcompile ~/.zshrc
