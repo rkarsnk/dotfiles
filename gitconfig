@@ -2,9 +2,11 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = rkarsnk
-	email = git-repos-rkarsnk@rkarsnk.jp
+	email = 00_g1thub01@rkarsnk.net
 
 [init]
 	defaultBranch = main
 [pull]
 	rebase = false
+[cinnabar]
+	version-check = 1686220898
