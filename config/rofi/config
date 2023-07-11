@@ -1,10 +1,11 @@
 rofi.modi: drun,run,windowcd,window,ssh
 rofi.combi-modi: windowcd,drun
-rofi.lines: 6
-rofi.font: FSMRMP 24
+rofi.lines: 4
+rofi.width: 50
 rofi.bw: 2
 rofi.location: 0
 rofi.padding: 5
+rofi.font: "PlemolJP35 Console NF 18"
 rofi.sidebar-mode: true
 rofi.hide-scrollbar: true
 rofi.fixed-num-lines: true
