@@ -9,7 +9,7 @@ set $mod Mod4
 set $alt Mod1
 
 ## Main font setting
-font pango:PlemolJP35 Console NF 16
+font pango:Noto Sans CJK JP Bold 14
 
 
 ## autorun
@@ -69,7 +69,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+b split b
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -166,23 +166,24 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-bar {
-    position            top
-    status_command      i3status --config ~/.config/i3status/config
-    
-    workspace_buttons   yes
-    tray_padding        0 
-    i3bar_command       i3bar
-    binding_mode_indicator  yes    
+#bar {
+#    position            top
+#    status_command      i3status --config ~/.config/i3status/config
+#    
+#    workspace_buttons   yes
+#    tray_padding        0 
+#    i3bar_command       i3bar
+#    binding_mode_indicator  yes    
+#
+#    font pango:PlemolJP35 Console NF 16
+#	
+#    colors {
+#        background  #ffffff
+#        statusline  #000000
+#    }
+#}
 
-    font pango:PlemolJP35 Console NF 16
-	
-    colors {
-        background  #ffffff
-        statusline  #000000
-    }
-}
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # System Menu (Command+Esc)
 bindsym $mod+Escape exec ~/.config/rofi/rofi_system.sh
@@ -190,3 +191,19 @@ bindsym $mod+Escape exec ~/.config/rofi/rofi_system.sh
 # Floting Window Setting
 for_window [class="1Password"] floating enable, resize set 1000 800
 
+
+default_border normal 2
+# gaps inner 3px
+gaps horizontal 3px
+
+# class                 border  backgr. text    indicator   chiled_border
+client.focused          #00d700 #00d700 #000000 #2e9ef4     #00d700
+client.focused_inactive #000000 #5f676a #ffffff #484e50     #5f676a
+client.unfocused        #005f00 #005f00 #888888 #292d2e     #222222
+client.urgent           #000000 #ff0000 #ffffff #900000     #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000     #0c0c0c
+# client.focused          #3399ff #3399ff #ffffff #2e9ef4     #285577
+# client.focused_inactive #000000 #5f676a #ffffff #484e50     #5f676a
+# client.unfocused        #333333 #222222 #888888 #292d2e     #222222
+# client.urgent           #2f343a #900000 #ffffff #900000     #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000     #0c0c0c
