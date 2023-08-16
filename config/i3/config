@@ -13,7 +13,7 @@ font pango:Noto Sans CJK JP Bold 14
 
 
 ## autorun
-include conf.d/i3-autorun.conf
+include config.d/i3-autorun.conf
 
 ## start a terminal
 bindsym $mod+Return exec alacritty
