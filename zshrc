@@ -1,19 +1,12 @@
+##############################
+#
+#  zsh config file: ~/.zshrc 
+#
+##############################
 DOTFILES=$HOME/.dotfiles
 
-typeset -U path PATH
-path=(
-  /opt/local/bin(N-/)
-  /opt/local/sbin(N-/)
-  /usr/bin
-  /usr/sbin
-  /bin
-  /sbin
-  /usr/local/bin(N-/)
-  /usr/local/sbin(N-/)
-  /Library/Apple/usr/bin
-)
-
 if [[ -d $DOTFILES ]] then
+    . $DOTFILES/zsh/zsh_path
     . $DOTFILES/zsh/zsh_history
     . $DOTFILES/zsh/zsh_lscolors
     . $DOTFILES/zsh/zsh_prompt
@@ -21,11 +14,20 @@ if [[ -d $DOTFILES ]] then
     . $DOTFILES/zsh/zsh_completion
 fi
 
+
+# Environment Module
+if [[ -d /opt/envmodules/init ]] then
+   . /opt/envmodules/init/zsh
+fi
+
+
 # Cargo Env
 if [[ -f $HOME/.cargo/env ]] then
     source "$HOME/.cargo/env"
 fi
 
+
+# zcompile
 if [[ ! -f ~/.zshrc.zwc ]] then
     zcompile ~/.zshrc
 else
@@ -34,3 +36,8 @@ else
     fi
 fi
 
+if [[ -d ~/.config/anyenv ]] then
+    eval "$(anyenv init -)"
+fi
+
+bindkey -e
