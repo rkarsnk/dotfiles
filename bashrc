@@ -36,8 +36,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # color_prompt
-if [ -f ~/.bash/bash_prompt ]; then
-    . ~/.bash/bash_prompt
+if [ -f ~/.config/bash/bash_prompt ]; then
+    . ~/.config/bash/bash_prompt
 fi
 
 # enable color support of ls and also add handy aliases
@@ -60,8 +60,8 @@ alias la='ls -A'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash/.bash_aliases ]; then
-    . ~/.bash/.bash_aliases
+if [ -f ~/.config/bash/bash_aliases ]; then
+    . ~/.config/bash/bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable

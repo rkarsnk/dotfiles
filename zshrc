@@ -4,14 +4,20 @@
 #
 ##############################
 DOTFILES=$HOME/.dotfiles
+CONF_DIR=$HOME/.config
 
-if [[ -d $DOTFILES ]] then
-    . $DOTFILES/zsh/zsh_path
-    . $DOTFILES/zsh/zsh_history
-    . $DOTFILES/zsh/zsh_lscolors
-    . $DOTFILES/zsh/zsh_prompt
-    . $DOTFILES/zsh/zsh_aliases
-    . $DOTFILES/zsh/zsh_completion
+if [[ -d $CONF_DIR ]] then
+    . $CONF_DIR/zsh/zsh_path
+    . $CONF_DIR/zsh/zsh_history
+    . $CONF_DIR/zsh/zsh_lscolors
+    . $CONF_DIR/zsh/zsh_prompt
+    . $CONF_DIR/zsh/zsh_aliases
+    . $CONF_DIR/zsh/zsh_completion
+fi
+
+# local-bin path
+if [[ -d ~/.local/bin ]] then
+    export PATH=$PATH:~/.local/bin
 fi
 
 
