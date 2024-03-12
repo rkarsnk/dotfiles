@@ -49,7 +49,8 @@ local plugins = {
   },
 
   -- Colorschemes
-  "rmehri01/onenord.nvim",
+  "rkarsnk/onenord.nvim",
+  --"mhartington/oceanic-next",
 
 }
 
@@ -57,7 +58,6 @@ local plugins = {
 local opts = {
   install = {
     missing = true,
-    colorscheme = { "onenord" },
   },
   checker = {
     enabled = true,
@@ -70,8 +70,9 @@ local opts = {
 
 require("lazy").setup(plugins, opts)
 
-require("onenord").setup({
+-- Onenord Theme
+onenord_theme = {
   theme = "dark",
 }
-)
+require("onenord").setup(onenord_theme)
 

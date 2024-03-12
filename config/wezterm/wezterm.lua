@@ -3,6 +3,12 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config = {
+    --default_prog = { 
+    --  "/bin/zsh", 
+    --  "-l",
+    --  "-c",
+    --  "tmux a -t default || tmux a -t base || tmux new -s base" },
+
     --# term 
     term = 'xterm-256color',
 
@@ -12,7 +18,7 @@ config = {
         cursor_bg = "#FFFFFF",
         cursor_fg = "#000000",
     },
-    default_cursor_style = "BlinkingBlock",
+    -- default_cursor_style = "BlinkingBlock",
     
     --# column x row
     initial_rows = 70,
@@ -30,6 +36,24 @@ config = {
     
     --# window opacity
     window_background_opacity = 0.75,
+    
+    window_frame = {
+    },
+
+    window_padding = {
+      left = 1,
+      right = 1,
+      top = 0,
+      bottom = 0,
+    },
+    
+    ssh_domains = {
+      {
+        name = 'pve',
+        remote_address = 'pve.rkarsnk.net',
+        username = 'rkarsnk',
+      },
+    },
 
 }
 
