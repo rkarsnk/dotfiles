@@ -27,7 +27,7 @@ DIALOG="
 
 OS="unknown"
 if [ "$(uname)" = "Darwin" ]; then
-  OS="mac"
+  OS="macos"
 elif [ "$(uname)" = "Linux" ]; then
   OS="linux"
 fi
@@ -43,3 +43,14 @@ dl_dotfiles() {
 }
 
 echo "$LOGO" "$DIALOG"
+echo "OS is $OS."
+
+read -p "enter git name: " GIT_NAME
+read -p "your git email: " GIT_EMAIL 
+read -p "re-type your git email: " GIT_EMAIL_CHECK
+if [ $GIT_EMAIL = $GIT_EMAIL_CHECK ]; then
+  echo "Mail OK."
+else
+  echo "Mail NG."
+fi
+
