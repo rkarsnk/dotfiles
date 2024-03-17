@@ -85,10 +85,10 @@ fi
 dl_dotfiles
 
 if [ $OS = "debian" ]; then
-  . ./lib/debian_install_dotfiles.sh
+  . $DOT_DIR/lib/debian_install_dotfiles.sh
 elif [ $OS = "arch" ]; then
-  . ./lib/arch_install_dotfiles.sh
+  . $DOT_DIR/lib/arch_install_dotfiles.sh
 elif [ $OS = "macos" ]; then
-  . ./lib/macos_install_dotfiles.sh
+  . $DOT_DIR/lib/macos_install_dotfiles.sh
 fi
 

@@ -1,8 +1,8 @@
 {
   "lazy.nvim": { "branch": "main", "commit": "83493db50a434a4c5c648faf41e2ead80f96e478" },
-  "nvim-treesitter": { "branch": "master", "commit": "9d39f00a9559cf3505d73b486c0b8055a6db4215" },
+  "nvim-treesitter": { "branch": "master", "commit": "bb3dd60ebcf6f75f73f39c44724b4a426ece6b7b" },
   "nvim-treesitter-context": { "branch": "master", "commit": "b8b7e52c1517d401d7c519787d5dc4528c41291a" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "b7a0bfa3e93697ca5b61b15df633404bf8f45883" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "d2a4ffc22d9d38d44edb73da007b3cf43451e9b4" },
   "onenord.nvim": { "branch": "main", "commit": "92f07b1db0d528301271d3233d2c180cb2a73c74" },
   "tabular": { "branch": "master", "commit": "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
   "vim-markdown": { "branch": "master", "commit": "a657e697376909c41475a686eeef7fc7a4972d94" }
