@@ -21,12 +21,6 @@ if [[ -d ~/.local/bin ]] then
 fi
 
 
-# Environment Module
-if [[ -d /opt/envmodules/init ]] then
-   . /opt/envmodules/init/zsh
-fi
-
-
 # Cargo Env
 if [[ -f $HOME/.cargo/env ]] then
     source "$HOME/.cargo/env"
@@ -42,8 +36,5 @@ else
     fi
 fi
 
-if [[ -d ~/.config/anyenv ]] then
-    eval "$(anyenv init -)"
-fi
-
 bindkey -e
+bindkey -r '^J' # Ctrl-j
