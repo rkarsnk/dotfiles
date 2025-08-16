@@ -1,0 +1,44 @@
+# --------------------------------------------------
+#  basic
+# --------------------------------------------------
+term = xterm-256color
+
+# --------------------------------------------------
+#  font
+# --------------------------------------------------
+font-family = PlemolJP Console NF
+font-size = 16
+
+# --------------------------------------------------
+#  opacity
+# --------------------------------------------------
+background-opacity = 0.80
+
+# --------------------------------------------------
+#  Window config
+# --------------------------------------------------
+window-padding-x = 10
+window-position-x = 0
+window-position-y = 0
+
+
+window-width = 249
+window-height = 61
+
+
+# --------------------------------------------------
+#  Quick Terminal config
+# --------------------------------------------------
+quick-terminal-position = "bottom"
+quick-terminal-screen = "main"
+quick-terminal-autohide = true
+quick-terminal-animation-duration = 0.2
+
+keybind = "global:cmd+shift+i=toggle_quick_terminal"
+
+
+# --------------------------------------------------
+#   Keybindings
+# --------------------------------------------------
+keybind = "cmd+shift+r=reload_config"
+keybind = "cmd+shift+f=toggle_fullscreen"
