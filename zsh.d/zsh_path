@@ -1,0 +1,26 @@
+if [[ -d /opt/rkdevtools/bin ]] then
+    export PATH="$PATH:/opt/rkdevtools/bin"
+fi
+
+if [[ -d /usr/local/opt/llvm ]] then
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+fi
+
+if [[ -d /usr/local/opt/binutils ]] then
+  export PATH="/usr/local/opt/binutils/bin:$PATH"
+#  export LDFLAGS="-L/usr/local/opt/binutils/lib"
+#  export CPPFLAGS="-I/usr/local/opt/binutils/include"
+fi
+
+#if [[ -d /usr/local/sbin ]] then
+#    export PATH="/usr/local/sbin:$PATH"
+#fi
+
+
+# MacPorts PATH
+if [[ -d /opt/local/bin ]] then
+	export PATH="/opt/local/bin:$PATH"
+fi
+
