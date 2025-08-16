@@ -1,18 +1,18 @@
-##############################
-#
-#  zsh config file: ~/.zshrc 
-#
-##############################
+# ===============================================
+# file: .zshrc
+# 
+#                              Written by rkarsnk
+# ===============================================
 DOTFILES=$HOME/.dotfiles
-CONF_DIR=$HOME/.config
+ZSH_DIR=$HOME/.zsh.d
 
-if [[ -d $CONF_DIR ]] then
-    . $CONF_DIR/zsh/zsh_path
-    . $CONF_DIR/zsh/zsh_history
-    . $CONF_DIR/zsh/zsh_lscolors
-    . $CONF_DIR/zsh/zsh_prompt
-    . $CONF_DIR/zsh/zsh_aliases
-    . $CONF_DIR/zsh/zsh_completion
+if [[ -d $ZSH_DIR ]] then
+    . $ZSH_DIR/zsh/zsh_path
+    . $ZSH_DIR/zsh/zsh_history
+    . $ZSH_DIR/zsh/zsh_lscolors
+    . $ZSH_DIR/zsh/zsh_prompt
+    . $ZSH_DIR/zsh/zsh_aliases
+    . $ZSH_DIR/zsh/zsh_completion
 fi
 
 # local-bin path
@@ -28,13 +28,13 @@ fi
 
 
 # zcompile
-if [[ ! -f ~/.zshrc.zwc ]] then
-    zcompile ~/.zshrc
-else
-    if [[ ~/.zshrc -nt ~/.zshrc.zwc ]] then
-       zcompile ~/.zshrc
-    fi
-fi
+#if [[ ! -f ~/.zshrc.zwc ]] then
+#    zcompile ~/.zshrc
+#else
+#    if [[ ~/.zshrc -nt ~/.zshrc.zwc ]] then
+#       zcompile ~/.zshrc
+#    fi
+#fi
 
 bindkey -e
 bindkey -r '^J' # Ctrl-j
