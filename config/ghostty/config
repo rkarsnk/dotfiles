@@ -17,22 +17,22 @@ background-opacity = 0.80
 # --------------------------------------------------
 #  Window config
 # --------------------------------------------------
-window-padding-x = 10
-window-position-x = 0
-window-position-y = 0
+window-padding-x = 5
+window-position-x = 5
+window-position-y = 3
 
 
-window-width = 249
-window-height = 61
+window-width = 120
+window-height = 40 
 
 
 # --------------------------------------------------
 #  Quick Terminal config
 # --------------------------------------------------
-quick-terminal-position = "bottom"
+quick-terminal-position = "top"
 quick-terminal-screen = "main"
 quick-terminal-autohide = true
-quick-terminal-animation-duration = 0.2
+quick-terminal-animation-duration = 0.1
 
 keybind = "global:cmd+shift+i=toggle_quick_terminal"
 
