@@ -17,9 +17,11 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # vi alias
-export EDITOR=nvim
-alias vim='nvim'
-alias vi='nvim'
+if command -v nvim &> /dev/null; then
+    export EDITOR=nvim
+    alias vim='nvim'
+    alias vi='nvim'
+fi
 
 # date alias
 alias today='date "+%Y-%m-%d"'

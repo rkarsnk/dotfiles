@@ -3,8 +3,4 @@ if [[ -f /opt/local/bin/brew ]] then
     FPATH=/opt/local/share/zsh-completions:$FPATH
 fi
 
-if [[ ! -d $HOME/.zsh ]] then
-    mkdir $HOME/.zsh
-fi
-
-autoload -Uz compinit &&compinit -d ~/.zsh/zcompdump
+autoload -Uz compinit &&compinit -d ~/.zcompdump
