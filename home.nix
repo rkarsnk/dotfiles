@@ -1,10 +1,15 @@
 { pkgs, ... }:
 
 {
-  home.username = "rkarsnk";
-  home.homeDirectory = "/Users/rkarsnk";
+  home = {
+    username = "rkarsnk";
+    homeDirectory = "/Users/rkarsnk";
+    stateVersion = "24.11";
+  };
 
-  home.stateVersion = "24.11";
+  imports = [
+    ./modules
+  ];
 
   programs.zsh = { 
     enable = true;
@@ -17,7 +22,6 @@
   };
 
   home.packages = with pkgs; [
-    hello
     home-manager
   ];
 }
