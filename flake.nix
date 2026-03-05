@@ -60,28 +60,28 @@
       # nix develop
       # Or if you use direnv:
       # direnv allow
-      devShells = forEachSupportedSystem (
-        { pkgs, system }:
-        {
+#      devShells = forEachSupportedSystem (
+#        { pkgs, system }:
+#        {
           # Run `nix develop` to activate this environment or `direnv allow` if you have direnv installed
-          default = pkgs.mkShellNoCC {
+#          default = pkgs.mkShellNoCC {
             # The Nix packages provided in the environment
-            packages = with pkgs; [
+#            packages = with pkgs; [
               # Add the flake's formatter to your project's environment
-              self.formatter.${system}
+#              self.formatter.${system}
 
               # Other packages
-              ponysay
-            ];
+#              ponysay
+#            ];
 
             # Set any environment variables for your development environment
-            env = { };
+#            env = { };
 
             # Add any shell logic you want executed when the environment is activated
-            shellHook = "";
-          };
-        }
-      );
+#            shellHook = "";
+#          };
+#        }
+#      );
 
       # Nix formatter
 
