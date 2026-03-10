@@ -8,12 +8,13 @@
   };
 
   imports = [
-    ./modules
+    ./editors
+#    ./shells
   ];
 
   programs.zsh = { 
     enable = true;
-    initExtra = ''
+    initContent = ''
       # 既存設定を読み込む
       if [ -f ~/.zshrc.local ]; then
         source ~/.zshrc.local
@@ -23,5 +24,6 @@
 
   home.packages = with pkgs; [
     home-manager
+    tree
   ];
 }
