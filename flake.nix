@@ -1,97 +1,69 @@
 {
-  description = "rkarsnk's nix config";
+  description = "Akira's nix-darwin system flake";
 
-  # Flake inputs
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0"; # Stable Nixpkgs (use 0.1 for unstable)
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  # Flake outputs
-  outputs =
-    { self, nixpkgs, home-manager, ... }@inputs:
-    let
-      # The systems supported for this flake's outputs
-      supportedSystems = [
-        "x86_64-linux" # 64-bit Intel/AMD Linux
-        "aarch64-linux" # 64-bit ARM Linux
-        "aarch64-darwin" # 64-bit ARM macOS
+
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  let
+    pkgs = import nixpkgs {
+      system = "aarch64-darwin";
+      config.allowUnfree = true;
+    };
+
+    username = "rkarsnk";
+
+    commonConfig = { pkgs, ... }: {
+      # List packages installed in system profile. To search by name, run:
+      # $ nix-env -qaP | grep wget
+      environment.systemPackages = [
+          pkgs.vim
+          pkgs.home-manager
       ];
 
-      # Helper for providing system-specific attributes
-      forEachSupportedSystem =
-        f:
-        nixpkgs.lib.genAttrs supportedSystems (
-          system:
-          f {
-            inherit system;
-            # Provides a system-specific, configured Nixpkgs
-            pkgs = import nixpkgs {
-              inherit system;
-              # Enable using unfree packages
-              config.allowUnfree = true;
-            };
-          }
-        );
+      # Necessary for using flakes on this system.
+      nix.settings.experimental-features = "nix-command flakes";
+      nix.enable = false;
 
-      username = "rkarsnk";
-    in
-    {
-      # -------------- Home Manager -----------------
-      homeConfigurations.${username} = 
-        home-manager.lib.homeManagerConfiguration {
-	  pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-	    config.allowUnfree = true;
-	  };
-	  modules = [
-	    ./home.nix
-	  ];
-	};
+      # Enable alternative shell support in nix-darwin.
+      # programs.fish.enable = true;
 
-	
+      # Set Git commit hash for darwin-version.
+      system.configurationRevision = self.rev or self.dirtyRev or null;
 
-      # Development environments output by this flake
+      # Used for backwards compatibility, please read the changelog before changing.
+      # $ darwin-rebuild changelog
+      system.stateVersion = 6;
 
-      # To activate the default environment:
-      # nix develop
-      # Or if you use direnv:
-      # direnv allow
-      devShells = forEachSupportedSystem (
-        { pkgs, system }:
-        {
-          # Run `nix develop` to activate this environment or `direnv allow` if you have direnv installed
-          default = pkgs.mkShellNoCC {
-            # The Nix packages provided in the environment
-            packages = with pkgs; [
-              # Add the flake's formatter to your project's environment
-              self.formatter.${system}
-
-              # Other packages
-              ponysay
-            ];
-
-            # Set any environment variables for your development environment
-            env = { };
-
-            # Add any shell logic you want executed when the environment is activated
-            shellHook = "";
-          };
-        }
-      );
-
-      # Nix formatter
-
-      # This applies the formatter that follows RFC 166, which defines a standard format:
-      # https://github.com/NixOS/rfcs/pull/166
-
-      # To format all Nix files:
-      # git ls-files -z '*.nix' | xargs -0 -r nix fmt
-      # To check formatting:
-      # git ls-files -z '*.nix' | xargs -0 -r nix develop --command nixfmt --check
-      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
+      # The platform the configuration will be used on.
+      nixpkgs.hostPlatform = "aarch64-darwin";
     };
+  in
+  {
+    # Build darwin flake using:
+    # $ darwin-rebuild build --flake .#MacBookNeo
+    darwinConfigurations."MacBookNeo" = nix-darwin.lib.darwinSystem {
+      modules = [
+        commonConfig
+      ];
+    };
+
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      modules = [
+        ./home-manager/home.nix
+      ];
+    };
+  };
 }
