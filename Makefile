@@ -1,11 +1,13 @@
+HOSTNAME := $(shell scutil --get LocalHostName)
+
 .PHONY: darwin-build
 darwin-build:
-	darwin-rebuild build --flake ~/.dotfiles/
+	darwin-rebuild build --flake .#$(HOSTNAME)
 
 
 .PHONY: darwin-switch
 darwin-switch:
-	sudo darwin-rebuild switch --flake ~/.dotfiles/
+	sudo darwin-rebuild switch --flake .#$(HOSTNAME)
 
 .PHONY: home-build
 home-build:

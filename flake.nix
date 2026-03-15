@@ -58,6 +58,13 @@
         commonConfig
       ];
     };
+    
+    # $ darwin-rebuild build --flake .#MacMiniM4
+    darwinConfigurations."MacMiniM4" = nix-darwin.lib.darwinSystem {
+      modules = [
+        commonConfig
+      ];
+    };
 
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
