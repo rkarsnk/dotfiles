@@ -23,4 +23,12 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+
+  fonts = {
+    packages = with pkgs; [
+      plemoljp-nf
+      udev-gothic-nf
+    ];
+  };
 }
