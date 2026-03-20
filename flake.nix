@@ -13,9 +13,11 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
   let
     pkgs = import nixpkgs {
       system = "aarch64-darwin";
@@ -32,6 +34,7 @@
     darwinConfigurations."MacBookNeo" = nix-darwin.lib.darwinSystem {
       modules = [
         commonConfig
+	      nix-homebrew.darwinModules.nix-homebrew
       ];
     };
     

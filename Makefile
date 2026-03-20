@@ -2,7 +2,7 @@ HOSTNAME := $(shell scutil --get LocalHostName)
 
 .PHONY: darwin-build
 darwin-build:
-	darwin-rebuild build --flake .#$(HOSTNAME)
+	sudo darwin-rebuild build --flake .#$(HOSTNAME)
 
 
 .PHONY: darwin-switch
