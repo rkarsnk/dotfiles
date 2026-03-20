@@ -24,7 +24,7 @@
 
     username = "rkarsnk";
 
-    commonConfig = import ./config/default.nix { inherit self pkgs; };
+    commonConfig = import ./nix-darwin/default.nix { inherit self pkgs; };
   in
   {
     # Build darwin flake using:
