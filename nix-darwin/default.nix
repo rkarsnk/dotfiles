@@ -5,6 +5,8 @@
   environment.systemPackages = [
       pkgs.vim
       pkgs.home-manager
+      pkgs.fastfetch
+      pkgs.yt-dlp
   ];
 
   # Necessary for using flakes on this system.
