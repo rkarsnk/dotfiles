@@ -23,6 +23,37 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
 
+  system = {
+    primaryUser = "rkarsnk";
+
+    defaults = {
+      # ファイルの拡張子を表示する
+      #NSGlobalDomain.AppleShowAllExtensions = true;
+ 
+      finder = {
+        # デスクトップにドライブのアイコンを表示しない
+        ShowHardDrivesOnDesktop = false;
+        ShowExternalHardDrivesOnDesktop = false;
+        ShowRemovableMediaOnDesktop = false;
+        # ファイルの拡張子を表示する
+        #AppleShowAllExtensions= true;
+        # 隠しファイルを表示する
+        #AppleShowAllFiles = true;
+        # デスクトップにアイコンを表示しない
+        CreateDesktop = false;
+        # カラム表示をデフォルトにする
+        FXPreferredViewStyle= "clmv";
+        # 新しいウィンドウのターゲットをHOMEにする
+        NewWindowTarget = "Home";
+      };
+      dock = {
+        autohide = true;
+        show-recents = false;
+        orientation = "left";
+      };
+    };
+  };
+
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
