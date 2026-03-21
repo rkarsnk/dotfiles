@@ -7,7 +7,7 @@ term = xterm-256color
 #  font
 # --------------------------------------------------
 font-family = PlemolJP Console NF
-font-size = 16
+font-size = 18
 
 # --------------------------------------------------
 #  opacity
