@@ -11,6 +11,13 @@
     initContent = builtins.readFile ./zsh/zshrc;
   };
 
+  home.file = {
+    ".config/ghostty/config".source = ./ghostty/config;
+    ".config/karabiner/karabiner.json".source = ./karabiner/karabiner.json;
+    ".config/karabiner/assets/complex_modifications".source = ./karabiner/assets/complex_modifications;
+
+  }; 
+
   home.packages = [
      pkgs.hello
   ];

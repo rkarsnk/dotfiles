@@ -30,9 +30,9 @@
       "visual-studio-code"
       "ghostty"
       "macskk"
-      "karabiner-elements"
       "zed"
       "drawio"
+      "karabiner-elements"
     ];
   };
 }
