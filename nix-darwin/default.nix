@@ -38,7 +38,7 @@
         # ファイルの拡張子を表示する
         #AppleShowAllExtensions= true;
         # 隠しファイルを表示する
-        #AppleShowAllFiles = true;
+        AppleShowAllFiles = false;
         # デスクトップにアイコンを表示しない
         CreateDesktop = false;
         # カラム表示をデフォルトにする

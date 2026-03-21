@@ -33,7 +33,12 @@
       "zed"
       "drawio"
       "karabiner-elements"
+      "1password"
     ];
+
+    masApps = {
+      "NextDNS" = 1464122853;
+    };
   };
 }
 
