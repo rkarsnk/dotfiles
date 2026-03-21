@@ -1,4 +1,5 @@
 typeset -U path cdpath fpath manpath
+
 for profile in ${(z)NIX_PROFILES}; do
   fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
 done
@@ -46,4 +47,28 @@ if [[ ! $TERM == xterm  ]] then
 else
     PROMPT=`echo '[%n@%m %#] '`
 fi
+
+# Aliases
+case ${OSTYPE} in
+	darwin*)
+		alias ls='ls -G'
+		;;
+	linux*)
+		alias ls='ls --color=auto'
+		;;
+esac
+
+# cp,mv,rm alias
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# date alias
+alias today='date "+%Y-%m-%d"'
+alias timestamp='date "+%Y%m%d"'
+alias now='date "+%Y-%m-%d %a %H:%M:%S %Z"'
+
+# bindkey for vim keybindings
+bindkey -e # Enable emacs keybindings
+bindkey -r '^J' # Ctrl-j
 
