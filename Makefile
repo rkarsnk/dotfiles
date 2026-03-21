@@ -15,5 +15,5 @@ home-build:
 
 .PHONY: home-switch
 home-switch:
-	home-manager switch --flake .#rkarsnk
+	home-manager switch -b bak --flake .#rkarsnk
 
