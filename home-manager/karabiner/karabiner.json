@@ -4,14 +4,15 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "AquaSKK for Terminal/iTerm2",
+                        "description": "AquaSKK/macSKK for Terminal/iTerm2",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2",
-                                            "^com\\.apple\\.Terminal"
+                                            "^com\\.apple\\.Terminal",
+                                            "^com\\.mitchellh\\.ghostty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
