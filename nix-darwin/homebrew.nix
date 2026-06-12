@@ -7,6 +7,7 @@
     enable = true;
     user = "rkarsnk";
     enableRosetta = false;
+    autoMigrate = true;
   };
 
   homebrew = {
@@ -22,6 +23,7 @@
     
     # List of Homebrew packages and casks to be installed
     brews = [
+      "lima"
     ];
 
     # List of Homebrew casks to be installed
@@ -35,10 +37,6 @@
       "karabiner-elements"
       "1password"
     ];
-
-    masApps = {
-      "NextDNS" = 1464122853;
-    };
   };
 }
 
