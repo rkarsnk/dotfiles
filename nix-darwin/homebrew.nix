@@ -1,24 +1,16 @@
 {
-  nix-homebrew,
   ...
 }:
 {
-  nix-homebrew = {
-    enable = true;
-    user = "rkarsnk";
-    enableRosetta = false;
-    autoMigrate = true;
-  };
-
   homebrew = {
     enable = true;
     user = "rkarsnk";
     onActivation = {
       upgrade = true;
-      autoUpdate = false;
+      autoUpdate = true;
       cleanup = "uninstall";
     };
-    global.autoUpdate = false;
+    global.autoUpdate = true;
 
     
     # List of Homebrew packages and casks to be installed

@@ -9,6 +9,8 @@
       pkgs.yt-dlp
   ];
 
+  environment.systemPath = [ "/opt/homebrew/bin" ];
+
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
   nix.enable = false;
@@ -36,11 +38,11 @@
         ShowExternalHardDrivesOnDesktop = false;
         ShowRemovableMediaOnDesktop = false;
         # ファイルの拡張子を表示する
-        #AppleShowAllExtensions= true;
+        # AppleShowAllExtensions= true;
         # 隠しファイルを表示する
         AppleShowAllFiles = false;
         # デスクトップにアイコンを表示しない
-        CreateDesktop = false;
+        CreateDesktop = true;
         # カラム表示をデフォルトにする
         FXPreferredViewStyle= "clmv";
         # 新しいウィンドウのターゲットをHOMEにする

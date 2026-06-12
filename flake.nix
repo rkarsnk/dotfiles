@@ -2,22 +2,22 @@
   description = "Akira's nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     pkgs = import nixpkgs {
       system = "aarch64-darwin";
@@ -34,7 +34,7 @@
     darwinConfigurations."MacBookNeo" = nix-darwin.lib.darwinSystem {
       modules = [
         commonConfig
-	      nix-homebrew.darwinModules.nix-homebrew
+        #nix-homebrew.darwinModules.nix-homebrew
       ];
     };
     
@@ -42,6 +42,7 @@
     darwinConfigurations."MacMiniM4" = nix-darwin.lib.darwinSystem {
       modules = [
         commonConfig
+        #nix-homebrew.darwinModules.nix-homebrew
       ];
     };
 
