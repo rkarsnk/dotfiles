@@ -8,7 +8,7 @@
     onActivation = {
       upgrade = true;
       autoUpdate = true;
-      cleanup = "uninstall";
+      # cleanup = "uninstall";
     };
     global.autoUpdate = true;
 
@@ -16,6 +16,7 @@
     # List of Homebrew packages and casks to be installed
     brews = [
       "lima"
+      "cocot"
     ];
 
     # List of Homebrew casks to be installed

@@ -1,5 +1,17 @@
 typeset -U path cdpath fpath manpath
 
+# ssh 関数
+ssh() {
+  case "$1" in
+    nvr500)
+      command cocot -t UTF-8 -p SJIS -- command ssh "$@"
+      ;;
+    *)
+      command ssh "$@"
+      ;;
+  esac
+}
+
 for profile in ${(z)NIX_PROFILES}; do
   fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
 done
