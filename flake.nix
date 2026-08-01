@@ -13,11 +13,15 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # blueprint
+    blueprint = {
+      url = "github:numtide/blueprint";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, blueprint }:
   let
     pkgs = import nixpkgs {
       system = "aarch64-darwin";
@@ -29,6 +33,9 @@
     commonConfig = import ./nix-darwin/default.nix { inherit self pkgs; };
   in
   {
+    # devshell(blueprint) for aarch64-darwin
+    devShells.aarch64-darwin.default = import ./devshell.nix { inherit pkgs; };
+
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MacBookNeo
     darwinConfigurations."MacBookNeo" = nix-darwin.lib.darwinSystem {
@@ -37,7 +44,7 @@
         #nix-homebrew.darwinModules.nix-homebrew
       ];
     };
-    
+
     # $ darwin-rebuild build --flake .#MacMiniM4
     darwinConfigurations."MacMiniM4" = nix-darwin.lib.darwinSystem {
       modules = [
