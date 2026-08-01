@@ -1,5 +1,9 @@
 HOSTNAME := $(shell scutil --get LocalHostName)
 
+.PHONY: update
+update:
+	nix flake update
+
 .PHONY: darwin-build
 darwin-build:
 	sudo darwin-rebuild build --flake .#$(HOSTNAME)

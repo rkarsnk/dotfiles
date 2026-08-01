@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 {
+
+  imports = [
+    ./emacs/emacs.nix
+  ];
+
   home.username = "rkarsnk";
   home.homeDirectory = "/Users/rkarsnk";
   home.stateVersion = "26.05";
@@ -13,9 +18,8 @@
 
   home.file = {
     ".config/ghostty/config".source = ./ghostty/config;
-    ".config/karabiner/karabiner.json".source = ./karabiner/karabiner.json;
+    # ".config/karabiner/karabiner.json".source = ./karabiner/karabiner.json;
     ".config/karabiner/assets/complex_modifications".source = ./karabiner/assets/complex_modifications;
-
   }; 
 
   home.packages = [
