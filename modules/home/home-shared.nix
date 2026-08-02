@@ -1,15 +1,33 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, osConfig ? null, ... }:
+let
+  hasDarwinVim = osConfig != null && osConfig ? programs && osConfig.programs.vim.enable && pkgs.stdenv.isDarwin;
+in
 {
-
   # only available on linux, disabled on macos
   services.ssh-agent.enable = pkgs.stdenv.isLinux;
 
   home.packages =
-    [ pkgs.ripgrep ]
+    [
+      pkgs.ripgrep
+      pkgs.hello
+    ]
     ++ (
-      # you can access the host configuration using osConfig.
-      pkgs.lib.optionals (osConfig.programs.vim.enable && pkgs.stdenv.isDarwin) [ pkgs.skhd ]
+      # you can access the host configuration using osConfig when available.
+      pkgs.lib.optionals hasDarwinVim [ pkgs.skhd ]
     );
 
-  home.stateVersion = "24.11"; # initial home-manager state
+  programs.zsh = {
+    enable = true;
+    initContent = builtins.readFile ../../home-manager/zsh/zshrc;
+  };
+
+  imports = [
+    ./files
+    ./programs/zsh.nix
+    ./programs/ghostty.nix
+    ./programs/karabiner.nix
+    ./programs/emacs.nix
+  ];
+
+  home.stateVersion = "26.05";
 }

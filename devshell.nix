@@ -1,13 +1,14 @@
 { pkgs }:
 pkgs.mkShell {
-  # Add build dependencies
-  packages = [ ];
+  packages = [
+    pkgs.nix
+    pkgs.home-manager
+    pkgs.nil
+  ];
 
-  # Add environment variables
   env = { };
 
-  # Load custom bash code
   shellHook = ''
-
+    echo "dotfiles devShell"
   '';
 }

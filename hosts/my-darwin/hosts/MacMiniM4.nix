@@ -1,0 +1,4 @@
+{ ... }:
+{
+  networking.hostName = "MacMiniM4";
+}

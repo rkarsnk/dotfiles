@@ -1,28 +1,10 @@
 { config, pkgs, ... }:
 {
-
-  imports = [
-    ./emacs/emacs.nix
-  ];
-
-  home.username = "rkarsnk";
-  home.homeDirectory = "/Users/rkarsnk";
-  home.stateVersion = "26.05";
-
   programs.home-manager.enable = true;
 
-  programs.zsh = {
-    enable = true;
-    initContent = builtins.readFile ./zsh/zshrc;
-  };
-
-  home.file = {
-    ".config/ghostty/config".source = ./ghostty/config;
-    # ".config/karabiner/karabiner.json".source = ./karabiner/karabiner.json;
-    ".config/karabiner/assets/complex_modifications".source = ./karabiner/assets/complex_modifications;
-  }; 
-
-  home.packages = [
-     pkgs.hello
+  imports = [
+    ./hosts/rkarsnk.nix
+    ../modules/home/home-shared.nix
   ];
+
 }

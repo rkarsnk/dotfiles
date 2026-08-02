@@ -33,28 +33,45 @@
     commonConfig = import ./nix-darwin/default.nix { inherit self pkgs; };
   in
   {
-    # devshell(blueprint) for aarch64-darwin
-    devShells.aarch64-darwin.default = import ./devshell.nix { inherit pkgs; };
+    packages = {
+      aarch64-darwin.default = pkgs.writeShellApplication {
+        name = "dotfiles-info";
+        runtimeInputs = [ pkgs.coreutils ];
+        text = ''
+          echo "dotfiles flake"
+          echo "hosts: MacBookNeo"
+        '';
+      };
+    };
 
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#MacBookNeo
+    devShells = {
+      aarch64-darwin.default = import ./devshell.nix { inherit pkgs; };
+    };
+
+    darwinModules.host-shared = commonConfig;
+    homeModules.home-shared = import ./modules/home/home-shared.nix;
+
     darwinConfigurations."MacBookNeo" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit self; };
       modules = [
+        ./hosts/my-darwin/darwin-configuration.nix
+        ./hosts/my-darwin/hosts/MacBookNeo.nix
         commonConfig
-        #nix-homebrew.darwinModules.nix-homebrew
       ];
     };
 
-    # $ darwin-rebuild build --flake .#MacMiniM4
     darwinConfigurations."MacMiniM4" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit self; };
       modules = [
+        ./hosts/my-darwin/darwin-configuration.nix
+        ./hosts/my-darwin/hosts/MacMiniM4.nix
         commonConfig
-        #nix-homebrew.darwinModules.nix-homebrew
       ];
     };
 
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      extraSpecialArgs = { inherit self; };
       modules = [
         ./home-manager/home.nix
       ];
