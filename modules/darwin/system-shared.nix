@@ -20,6 +20,9 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
 
+  users.users.rkarsnk.home = "/Users/rkarsnk";
+
+
   system = {
     primaryUser = "rkarsnk";
 
