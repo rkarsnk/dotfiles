@@ -1,4 +1,7 @@
-{ flake, pkgs, ... }:
+{ flake, pkgs, inputs, ... }:
+let
+  inherit (inputs.self.lib) username homeDirectory;
+in
 {
   environment.systemPackages = [
     pkgs.vim
@@ -20,11 +23,10 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
 
-  users.users.rkarsnk.home = "/Users/rkarsnk";
-
+  users.users.${username}.home = homeDirectory;
 
   system = {
-    primaryUser = "rkarsnk";
+    primaryUser = username;
 
     defaults = {
       finder = {

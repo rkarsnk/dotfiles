@@ -1,8 +1,8 @@
-{ ... }:
+{ inputs, ... }:
 {
   homebrew = {
     enable = true;
-    user = "rkarsnk";
+    user = inputs.self.lib.username;
     onActivation = {
       upgrade = true;
       autoUpdate = true;

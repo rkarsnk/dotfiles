@@ -1,8 +1,16 @@
-{ pkgs, osConfig ? null, ... }:
+{
+  pkgs,
+  inputs,
+  osConfig ? null,
+  ...
+}:
 let
   hasDarwinVim = osConfig != null && osConfig ? programs && osConfig.programs.vim.enable && pkgs.stdenv.isDarwin;
 in
 {
+  home.username = inputs.self.lib.username;
+  home.homeDirectory = inputs.self.lib.homeDirectory;
+
   # only available on linux, disabled on macos
   services.ssh-agent.enable = pkgs.stdenv.isLinux;
 
