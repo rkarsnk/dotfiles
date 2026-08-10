@@ -1,15 +1,32 @@
-{ pkgs, osConfig, ... }:
 {
+  pkgs,
+  inputs,
+  osConfig ? null,
+  ...
+}:
+let
+  hasDarwinVim = osConfig != null && osConfig ? programs && osConfig.programs.vim.enable && pkgs.stdenv.isDarwin;
+in
+{
+  home.username = inputs.self.lib.username;
+  home.homeDirectory = inputs.self.lib.homeDirectory;
 
   # only available on linux, disabled on macos
   services.ssh-agent.enable = pkgs.stdenv.isLinux;
 
   home.packages =
-    [ pkgs.ripgrep ]
+    [
+      pkgs.ripgrep
+      pkgs.hello
+    ]
     ++ (
-      # you can access the host configuration using osConfig.
-      pkgs.lib.optionals (osConfig.programs.vim.enable && pkgs.stdenv.isDarwin) [ pkgs.skhd ]
+      # you can access the host configuration using osConfig when available.
+      pkgs.lib.optionals hasDarwinVim [ pkgs.skhd ]
     );
 
-  home.stateVersion = "24.11"; # initial home-manager state
+  imports = [
+    ./programs
+  ];
+
+  home.stateVersion = "26.05";
 }
