@@ -26,7 +26,7 @@ in
     ./programs/zsh.nix
     ./programs/ghostty.nix
     ./programs/karabiner.nix
-    ./programs/emacs.nix
+    ./programs/opencode.nix
   ];
 
   home.stateVersion = "26.05";

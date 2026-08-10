@@ -17,10 +17,10 @@ darwin-switch:
 # Build the Home Manager configuration without applying it yet.
 .PHONY: home-build
 home-build:
-	home-manager build --flake .#rkarsnk
+	home-manager build --flake .#rkarsnk@$(HOSTNAME)
 
 # Apply the Home Manager configuration.
 .PHONY: home-switch
 home-switch:
-	home-manager switch -b bak --flake .#rkarsnk
+	home-manager switch -b bak --flake .#rkarsnk@$(HOSTNAME)
 
