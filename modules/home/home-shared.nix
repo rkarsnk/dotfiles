@@ -25,10 +25,7 @@ in
     );
 
   imports = [
-    ./programs/zsh
-    ./programs/ghostty
-    ./programs/karabiner
-    # ./programs/opencode.nix
+    ./programs
   ];
 
   home.stateVersion = "26.05";

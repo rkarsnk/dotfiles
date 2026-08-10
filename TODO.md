@@ -3,18 +3,23 @@
 - [x] Blueprintの理解
 - [x] 現行dotfiles棚卸し
 - [x] Blueprint初期化
-- [ ] モジュール設計とマッピング (部分完了)
-- [ ] 設定ファイル移植
+- [x] モジュール設計とマッピング
+- [ ] 設定ファイル移植 (部分完了: zsh/ghostty/karabinerは済み、emacsの設定ファイルは未移植)
 - [x] アセット配置とシンボリック連携
-- [ ] ビルドと検証 (部分完了)
+- [x] ビルドと検証 (`nix flake check` / `make darwin-build` / `make home-build` は成功。ただし既知の軽微な制約が残存、下記参照)
 - [ ] ドキュメント化とクリーンアップ
 
 ## 次の優先事項
 
-1. アセット配置とシンボリック連携を整理する
+1. emacsの設定ファイル（init.el等）をhome-manager管理下に移植する
 2. README に運用ルールとモジュール追加方針を追記する
 3. 不要な旧ファイルやテンプレートのクリーンアップを確定する
-4. `nix flake check` / `make darwin-build` / `make home-switch` で最終確認する
+4. 今回の変更（`modules/home/programs/default.nix`追加、`README.md`修正、`homebrew.nix`のdrawio対応）をコミットする
+
+## 既知の制約 (対応不要)
+
+- `nix flake check` は `darwinModules.emacs` / `darwinModules.system-shared` / `homeModules.home-shared` の `isFunctionOrAttrs` チェックで失敗し続ける。これは `pkgs`/`lib`/`config` を引数に取る通常のnix-darwin/home-managerモジュールが、blueprintの規約上ファイルパスのまま返され、flake出力としてはstring化されるために起きる構造的な制約。`darwinConfigurations.*` のビルド自体には影響しないため、対応不要と判断。
+- `drawio` cask は `nixpkgs` 同梱のHomebrewコードが古く `command_wrapper` 構文を解釈できないため `modules/darwin/homebrew.nix` で一時的に無効化を検討中（nixpkgsのHomebrewパッケージ更新待ち）。
 
 ---
 
