@@ -19,7 +19,6 @@
 ## 既知の制約 (対応不要)
 
 - `nix flake check` は `darwinModules.emacs` / `darwinModules.system-shared` / `homeModules.home-shared` の `isFunctionOrAttrs` チェックで失敗し続ける。これは `pkgs`/`lib`/`config` を引数に取る通常のnix-darwin/home-managerモジュールが、blueprintの規約上ファイルパスのまま返され、flake出力としてはstring化されるために起きる構造的な制約。`darwinConfigurations.*` のビルド自体には影響しないため、対応不要と判断。
-- `drawio` cask は `nixpkgs` 同梱のHomebrewコードが古く `command_wrapper` 構文を解釈できないため `modules/darwin/homebrew.nix` で一時的に無効化を検討中（nixpkgsのHomebrewパッケージ更新待ち）。
 
 ---
 

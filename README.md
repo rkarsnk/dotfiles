@@ -89,6 +89,5 @@ make update            # flake.lock を更新
 ## 既知の制約
 
 - `nix flake check` は `darwinModules.emacs` / `darwinModules.system-shared` / `homeModules.home-shared` の `isFunctionOrAttrs` チェックで失敗する。これは `pkgs`/`lib`/`config` を引数に取る通常の nix-darwin/home-manager モジュールが、blueprint の規約上ファイルパスのまま返され flake 出力としては string 化されるために起きる構造的な制約で、`darwinConfigurations.*` のビルド自体には影響しないため対応不要と判断している。
-- `drawio` cask は nixpkgs 同梱の Homebrew コードが古く `command_wrapper` 構文を解釈できないため、`modules/darwin/homebrew.nix` での無効化を検討中（nixpkgs の Homebrew パッケージ更新待ち）。
 
 進捗の詳細は [TODO.md](TODO.md) を参照してください。
