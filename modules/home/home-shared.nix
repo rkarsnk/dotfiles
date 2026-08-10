@@ -16,16 +16,10 @@ in
       pkgs.lib.optionals hasDarwinVim [ pkgs.skhd ]
     );
 
-  programs.zsh = {
-    enable = true;
-    initContent = builtins.readFile ../../home-manager/zsh/zshrc;
-  };
-
   imports = [
-    ./files
-    ./programs/zsh.nix
-    ./programs/ghostty.nix
-    ./programs/karabiner.nix
+    ./programs/zsh
+    ./programs/ghostty
+    ./programs/karabiner
     ./programs/opencode.nix
   ];
 

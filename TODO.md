@@ -5,7 +5,7 @@
 - [x] Blueprint初期化
 - [ ] モジュール設計とマッピング (部分完了)
 - [ ] 設定ファイル移植
-- [ ] アセット配置とシンボリック連携
+- [x] アセット配置とシンボリック連携
 - [ ] ビルドと検証 (部分完了)
 - [ ] ドキュメント化とクリーンアップ
 
@@ -21,8 +21,8 @@
 ## 1. アセット配置 / シンボリック連携
 
 - `ghostty` / `karabiner` / `zsh` / `emacs` の設定を `home-manager` 管理下で完結させる
-- 既存のファイルを `home-manager` 以下に置き、`files` から `home.file` でリンクする
-- 必要なら `home-manager/hosts/<machine>.nix` でマシン固有の config を分離する
+- 設定ファイル本体は各 `modules/home/programs/<name>/` 配下に同居させ、`home.file` / `builtins.readFile` で `./` 相対パス参照する（旧 `home-manager/` トップレベルディレクトリは廃止済み）
+- 必要ならホスト固有の config は `hosts/<machine>/users/<user>/home-configuration.nix` で分離する
 
 ## 2. ドキュメント化
 

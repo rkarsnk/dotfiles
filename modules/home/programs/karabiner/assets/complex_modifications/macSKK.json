@@ -1,8 +1,8 @@
 {
-  "title": "AquaSKK",
+  "title": "macSKK",
   "rules": [
     {
-      "description": "AquaSKK for Terminal/iTerm2",
+      "description": "macSKK for Terminals/IDEs",
       "manipulators": [
         {
           "type": "basic",
@@ -25,7 +25,9 @@
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2",
                 "^com\\.apple\\.Terminal",
-                "^com\\.mitchellh\\.ghostty"
+                "^com\\.mitchellh\\.ghostty",
+                "^com\\.microsoft\\.VSCode",
+                "^dev\\.zed\\.Zed"
               ]
             }
           ]
