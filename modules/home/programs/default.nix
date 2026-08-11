@@ -4,6 +4,6 @@
     ./zsh
     ./ghostty
     ./karabiner
-    # ./opencode.nix
+    ./opencode.nix
   ];
 }
