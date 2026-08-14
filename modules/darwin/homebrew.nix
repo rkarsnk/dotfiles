@@ -10,7 +10,9 @@
     global.autoUpdate = true;
 
     brews = [
-      "lima"
+      "colima"
+      "docker"
+      "docker-compose"
       "cocot"
     ];
 
