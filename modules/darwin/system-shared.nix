@@ -50,7 +50,8 @@ in
 
   imports = [
     ./homebrew.nix
-    ./emacs.nix
+    ./programs/emacs.nix
+    ./programs/neovim.nix
   ];
 
   fonts = {
