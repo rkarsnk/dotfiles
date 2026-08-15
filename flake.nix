@@ -17,6 +17,9 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    taurus-viewer.url = "path:/Users/rkarsnk/Works/taurus-viewer"; # またはgithub:sheepla/taurus-viewer公開後にそちらへ
+    taurus-viewer.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
