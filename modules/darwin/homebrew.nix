@@ -9,15 +9,23 @@
     };
     global.autoUpdate = true;
 
+    taps = [
+         {
+	    name = "openai/tools"; 
+   	    trusted = true;
+	 }
+    ];
+
     brews = [
       "colima"
       "docker"
       "docker-compose"
       "cocot"
+      "openai/tools/softnet"
+      "openai/tools/tart"
     ];
 
     casks = [
-      "appcleaner"
       "visual-studio-code"
       "ghostty"
       "macskk"
