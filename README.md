@@ -13,14 +13,18 @@
 │   ├── darwin/                        # nix-darwin用モジュール（darwinModules.<name>として公開）
 │   │   ├── system-shared.nix          # 全ホスト共通のdarwin設定（Finder/Dock/フォント/nix設定など）
 │   │   ├── homebrew.nix               # Homebrew（brew/cask）のパッケージ管理
-│   │   └── emacs.nix                  # Emacs本体（emacs-macport）のインストール
+│   │   ├── nix-direnv.nix             # nix-direnvの有効化
+│   │   └── programs/                  # インストールするアプリごとの定義
+│   │       ├── emacs.nix              # Emacs本体（emacs-macport）のインストール
+│   │       ├── neovim.nix             # Neovimのインストール
+│   │       └── claude-code.nix        # Claude Code CLIのインストール
 │   └── home/                          # home-manager用モジュール（homeModules.<name>として公開）
 │       ├── home-shared.nix            # 全ユーザー共通のhome-manager設定
 │       └── programs/                  # プログラムごとの設定（dotfiles本体を同居させる）
 │           ├── zsh/                   # zshrcなど
 │           ├── ghostty/               # ghostty configなど
 │           ├── karabiner/             # karabinerのcomplex_modificationsなど
-│           └── opencode.nix           # 現在無効化中（home-shared.nixからimportコメントアウト）
+│           └── opencode/              # opencode（nixpkgs-unstable由来、MacBookNeoには入れない）
 └── hosts/
     └── <machine>/                     # マシンごとのホスト定義（例: MacBookNeo, MacMiniM4）
         ├── darwin-configuration.nix   # system-sharedをimportし、hostNameなどマシン固有値を設定
