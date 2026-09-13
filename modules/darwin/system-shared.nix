@@ -8,6 +8,7 @@ in
     pkgs.home-manager
     pkgs.fastfetch
     pkgs.yt-dlp
+    pkgs.git
   ];
 
   environment.systemPath = [ "/opt/homebrew/bin" ];
