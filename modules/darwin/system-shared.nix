@@ -54,7 +54,6 @@ in
     ./nix-direnv.nix
     ./programs/emacs.nix
     ./programs/neovim.nix
-    ./programs/claude-code.nix
 
   ];
 
