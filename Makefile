@@ -12,7 +12,7 @@ darwin-build: update
 
 # Apply the system configuration (requires sudo password).
 .PHONY: darwin-switch
-darwin-switch: darwin-switch
+darwin-switch: darwin-build
 	sudo darwin-rebuild switch --flake .#$(HOSTNAME)
 
 # Build the Home Manager configuration without applying it yet.
