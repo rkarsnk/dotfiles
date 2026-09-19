@@ -80,6 +80,30 @@ make home-switch
 make update            # flake.lock を更新
 ```
 
+### 古い世代(generation)の確認・削除・ディスク容量回収
+
+nix-darwin は `darwin-switch` のたびに新しい system generation を作り、古い世代は明示的に消すまで `/nix/var/nix/profiles/` 配下に残り続ける。
+
+確認:
+
+```bash
+sudo darwin-rebuild --list-generations
+```
+
+削除（例: 1〜30を削除し、現在の世代だけ残す場合。`..` の範囲記法は使えないため世代番号をスペース区切りで列挙する）:
+
+```bash
+sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+```
+
+`--delete-generations` は世代の参照を外すだけで、実際の nix store のディスク容量はまだ回収されない。回収するには:
+
+```bash
+sudo nix-collect-garbage -d
+```
+
+`-d` は参照されなくなった store パスを削除するオプション。世代を消さずに実行すると現在使われている世代しか掃除されないため、古い世代を消してから実行すること。
+
 ## 追加するときの考え方
 
 - 共有したい設定は [modules](modules) に置く
