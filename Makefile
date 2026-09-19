@@ -2,16 +2,17 @@ HOSTNAME := $(shell scutil --get LocalHostName)
 
 .PHONY: update
 update:
+	ulimit -n 10240
 	nix flake update
 
 # Build the system configuration without applying it yet.
 .PHONY: darwin-build
-darwin-build:
+darwin-build: update
 	darwin-rebuild build --flake .#$(HOSTNAME)
 
 # Apply the system configuration (requires sudo password).
 .PHONY: darwin-switch
-darwin-switch:
+darwin-switch: darwin-switch
 	sudo darwin-rebuild switch --flake .#$(HOSTNAME)
 
 # Build the Home Manager configuration without applying it yet.
