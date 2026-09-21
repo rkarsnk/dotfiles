@@ -15,13 +15,14 @@
 │   │   ├── homebrew.nix               # Homebrew（brew/cask）のパッケージ管理
 │   │   ├── nix-direnv.nix             # nix-direnvの有効化
 │   │   └── programs/                  # インストールするアプリごとの定義
-│   │       ├── emacs.nix              # Emacs本体（emacs-macport）のインストール
+│   │       ├── emacs.nix              # Emacs本体（Cocoa Emacs + mac-ime, nixpkgs-unstable）のインストール
 │   │       ├── neovim.nix             # Neovimのインストール
 │   │       └── claude-code.nix        # Claude Code CLIのインストール
 │   └── home/                          # home-manager用モジュール（homeModules.<name>として公開）
 │       ├── home-shared.nix            # 全ユーザー共通のhome-manager設定
 │       └── programs/                  # プログラムごとの設定（dotfiles本体を同居させる）
 │           ├── zsh/                   # zshrcなど
+│           ├── emacs/                 # init.el（日本語/UTF-8、mac-ime、C-j）
 │           ├── ghostty/               # ghostty configなど
 │           ├── karabiner/             # karabinerのcomplex_modificationsなど
 │           └── opencode/              # opencode（nixpkgs-unstable由来、MacBookNeoには入れない）
@@ -116,6 +117,6 @@ sudo nix-collect-garbage -d
 
 ## 既知の制約
 
-- `nix flake check` は `darwinModules.emacs` / `darwinModules.system-shared` / `homeModules.home-shared` の `isFunctionOrAttrs` チェックで失敗する。これは `pkgs`/`lib`/`config` を引数に取る通常の nix-darwin/home-manager モジュールが、blueprint の規約上ファイルパスのまま返され flake 出力としては string 化されるために起きる構造的な制約で、`darwinConfigurations.*` のビルド自体には影響しないため対応不要と判断している。
+- `nix flake check` は `darwinModules.system-shared` / `homeModules.home-shared` の `isFunctionOrAttrs` チェックで失敗する。これは `pkgs`/`lib`/`config` を引数に取る通常の nix-darwin/home-manager モジュールが、blueprint の規約上ファイルパスのまま返され flake 出力としては string 化されるために起きる構造的な制約で、`darwinConfigurations.*` のビルド自体には影響しないため対応不要と判断している。
 
 進捗の詳細は [TODO.md](TODO.md) を参照してください。
