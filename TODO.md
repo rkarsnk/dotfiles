@@ -11,7 +11,7 @@
 
 ## 次の優先事項
 
-1. Emacsのinit.elを拡充する（フォント、ウィンドウ拡大の確認など。下記「Emacsメモ」参照）
+1. Emacsのinit.elを拡充する（フォントなど。下記「Emacsメモ」参照）
 2. README に運用ルールとモジュール追加方針を追記する
 3. 不要な旧ファイルやテンプレートのクリーンアップを確定する
 4. 今回の変更（`modules/home/programs/default.nix`追加、`README.md`修正、`homebrew.nix`のdrawio対応）をコミットする
@@ -27,7 +27,7 @@
 - `mac-ime` の動的モジュール（`mac-ime-module.so`）はnix管理外。初回の有効化時にcurlでGitHubから取得する。保存先はnix storeが読み取り専用で書けないため `~/.emacs.d/mac-ime/` に変更している。パッケージ更新でバージョンが変わると再取得を求められる。
 - C-jはEmacsが先に処理してmacSKKに届かないため、Emacs側でmacSKKの入力ソースID（`net.mtgto.inputmethod.macSKK.hiragana`）に切り替えている。変換中の確定などmacSKK本来のC-j動作は再現できない。
 - ターミナルから `emacs` を起動すると `error messaging the mach port for IMKCFRunLoopWakeUpReliable` がstderrに出る。入力には影響しないため対応していない（Finder/Spotlight/`open -a Emacs` から起動すると出ない）。
-- 旧構成（emacs-macport）ではウィンドウ拡大ができなかった。`frame-resize-pixelwise` が `nil`（デフォルト）でフレームが文字セル単位に丸められるのが原因と推測。Cocoa版でも同じなら init.el で `(setq frame-resize-pixelwise t window-resize-pixelwise t)` を試す（Cocoa版での確認は未実施）。
+- 旧構成（emacs-macport）ではウィンドウ拡大ができなかったが、Cocoa版（unstableの `emacs` 31.1）に変更して解消した（確認済み）。`frame-resize-pixelwise` の設定は不要だった。
 - 試して見送ったこと: `takaxp/ns-inline-patch` の `emacs-29.1-inline.patch` を `pkgs.emacs`（30.2）に `overrideAttrs` で当てる案は、`configure.ac` の変更により `configure` を再生成すると clang が `-std=gnu23` を選び、Objective-C（`nsterm.m` など）で `bool` / `static_assert` が未定義になりビルドできなかった。`mac-ime` で日本語入力ができたため、現在は使っていない。
 
 ---
