@@ -34,6 +34,7 @@
       "karabiner-elements"
       "1password"
       "claude-code@latest"
+      "obsidian"
     ];
   };
 }
